@@ -20,5 +20,6 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   // 💡 読み込んだレイアウトにページの中身(children)を渡してそのまま返す
+  // これがないと、ページ遷移ができない
   return <BasicLayout>{children}</BasicLayout>;
 }
