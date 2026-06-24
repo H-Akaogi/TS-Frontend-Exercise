@@ -1,4 +1,4 @@
-import WelcomeMessage from "@/components/chapter03/WelcomeMessage";
+import WelcomeMessage from "@/components/chapter03/ex3-1/WelcomeMessage";
 export default function Home() {
   return (
     <main className="text-center">
