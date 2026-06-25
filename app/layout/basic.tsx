@@ -44,24 +44,6 @@ export default function RootLayout({
                             <a href="/chapter04/list4/list" className="hover:underline">ユーザー（リスト）</a>
                             {/* リスト4-8 UserTable(ユーザー一覧)コンポーネントの実装 */}
                             <a href="/chapter04/list4/table" className="hover:underline">ユーザー（表）</a>
-                            {/* 
-                            リスト4-1 ActionButtonコンポーネントの実装
-                            リスト4-2 useState()フックの利用
-                            リスト4-3 TextInputコンポーネントの実装
-                            */}
-                            <a href="/chapter04/list4/input" className="hover:underline">入力</a>
-                            {/* 
-                            リスト4-4 SelectInput(プルダウン)コンポーネントの実装
-                            */}
-                            <a href="/chapter04/list4/select" className="hover:underline">プルダウン</a>
-                            {/* 
-                            リスト4-5 RadioGroupInput(ラジオボタン)コンポーネントの実装
-                            */}
-                            <a href="/chapter04/list4/radio" className="hover:underline">ラジオボタン</a>
-                            {/* 
-                            リスト4-6 CheckboxGroupInput(チェックボックス)コンポーネントの実装
-                            */}
-                            <a href="/chapter04/list4/check" className="hover:underline">チェックボックス</a>
                             {/* 演習 4-1 計算機を作成する(加算機能のみ) */}
                             <a href="/chapter04/ex4-1" className="hover:underline">計算機(ラジオボタン)</a>
                             {/* 演習 4-2 計算の種類をプルダウンで選択可能にする */}

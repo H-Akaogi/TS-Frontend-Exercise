@@ -6,6 +6,7 @@ import ActionButton from "@/components/chapter04/ex4-1/button/ActionButton";
 import NumberInput from "@/components/chapter04/ex4-1/input/NumberInput";
 import NumberSelectInput from "@/components/chapter04/ex4-2/select/NumberSelectInput";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 export default function CalculatorPage() {
     const [num1, setNum1] = useState(0);
@@ -64,7 +65,7 @@ export default function CalculatorPage() {
             <NumberInput label="数値2" value={num2} onChange={(val) => setNum2(val)} />
 
             <div className="mt-4 mb-6">
-                <ActionButton label="計算する" onClick={handleCalculate} isRounded={true} />
+                <Button onClick={handleCalculate} >計算する</Button>
             </div>
 
             <p className="text-gray-700 font-bold text-lg p-4 bg-gray-100 rounded text-center">

@@ -1,4 +1,5 @@
 "use client";
+import { Button } from "@/components/ui/button";
 
 import { useState } from "react";
 import ActionButton from "@/components/chapter04/list4/button/ActionButton";
@@ -111,7 +112,8 @@ export default function ProfilePage() {
 
             <div className="mt-4 text-center">
                 {/* 作成したボタン部品 */}
-                <ActionButton label="登録" onClick={handleClick} />
+                <Button variant="secondary" onClick={handleClick}> 登録</Button>
+
             </div>
             <div className="mt-6 text-gray-700 font-bold text-center text-lg text-blue-600">
                 <p>⭐{message1}</p>
