@@ -2,6 +2,8 @@
  * 演習 3-2 Rootレイアウトを作成する
  * アバウトページ
  */
+/* ページ本体となる関数はexport default function 関数名(){...}で公開する */
+/* 関数名は「画面の内容+Page()」とする */
 export default function AboutPage() {
     return (
         <main className="p-8">

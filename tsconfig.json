@@ -27,6 +27,8 @@
         "./*"
       ]
     },
+    /*exprrimentalDecorators: @injectableなどデコレータ記法を許可*/
+    /*emitDecoratorMetadata: 実行時にDIコンテナが依存関係を正しく判断できるように型情報を出力する*/
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
