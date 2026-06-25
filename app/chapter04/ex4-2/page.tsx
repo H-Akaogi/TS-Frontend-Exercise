@@ -49,7 +49,7 @@ export default function CalculatorPage() {
 
     return (
         <main className="p-4 max-w-sm mx-auto mt-10 border rounded shadow-sm bg-white">
-            <h1 className="text-xl font-bold mb-4 border-b pb-2">本格・計算機アプリ</h1>
+            <h1 className="text-xl font-bold mb-4 border-b pb-2">計算機（プルダウン）</h1>
 
             <NumberInput label="数値1" value={num1} onChange={(val) => setNum1(val)} />
 

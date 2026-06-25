@@ -54,7 +54,7 @@ export default function RootLayout({
                             */}
                             <a href="/chapter04/list4/radio" className="hover:underline">ラジオボタン</a>
                             {/* 演習 4-1 計算機を作成する(加算機能のみ) */}
-                            <a href="/chapter04/ex4-1" className="hover:underline">計算機</a>
+                            <a href="/chapter04/ex4-1" className="hover:underline">計算機(ラジオボタン)</a>
                             {/* 演習 4-2 計算の種類をプルダウンで選択可能にする */}
                             <a href="/chapter04/ex4-2" className="hover:underline">計算機(プルダウン)</a>
 
