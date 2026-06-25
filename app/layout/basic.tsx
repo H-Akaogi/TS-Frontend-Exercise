@@ -41,7 +41,9 @@ export default function RootLayout({
                             リスト3-3 コンポーネント間のデータ受け渡し
                             リスト4-7 UserCard(ユーザー一覧)コンポーネントの実装
                              */}
-                            <a href="/chapter04/list4/list" className="hover:underline">ユーザー一覧</a>
+                            <a href="/chapter04/list4/list" className="hover:underline">ユーザー（リスト）</a>
+                            {/* リスト4-8 UserTable(ユーザー一覧)コンポーネントの実装 */}
+                            <a href="/chapter04/list4/table" className="hover:underline">ユーザー（表）</a>
                             {/* 
                             リスト4-1 ActionButtonコンポーネントの実装
                             リスト4-2 useState()フックの利用
