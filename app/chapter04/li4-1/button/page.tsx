@@ -1,3 +1,6 @@
+/**
+ * リスト4-1 ActionButtonコンポーネントの実装
+ */
 // 親(page.tsx)の先頭に必ず付加する
 "use client";
 import ActionButton from "@/components/chapter04/li4-1/button/ActionButton";

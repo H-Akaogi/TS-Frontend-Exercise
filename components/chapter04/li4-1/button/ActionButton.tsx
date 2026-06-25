@@ -12,7 +12,7 @@ type ActionButtonProps = {
 /**
  * コンポーネントの実装
  * @param label ボタンに表示する文字
- * @param onClick クリックされたときに実行する
+ * @param onClick クリックされたときに実行する(コールバック関数)
  * @returns 
  */
 export default function ActionButton({ label, onClick }: ActionButtonProps) {
