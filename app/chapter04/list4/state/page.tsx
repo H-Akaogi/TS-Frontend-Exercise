@@ -4,14 +4,14 @@
 "use client"; // 状態管理(useState)を使用するため必須
 // ReactからuseStateフックをインポート
 import { useState } from "react";
-import ActionButton from "@/components/chapter04/li4-1/button/ActionButton";
+import ActionButton from "@/components/chapter04/list4/button/ActionButton";
 
 export default function StateSamplePage() {
     // 状態(State)の定義: 初期値を未登録に設定
     const [statusMessage, setStatusMessage] = useState("未登録");
 
-    // ボタン押下時のイベントハンドラ
-    const handleClick = () => {//アロー関数
+    // ボタン押下時のイベントハンドラ【アロー関数】
+    const handleClick = () => {
         // 更新関数を呼び出して状態を書き換える
         // ＊この関数が実行されると、Reactがデータの変更を検知して再レンダリングを行う
         setStatusMessage("登録が完了しました！");
@@ -27,7 +27,10 @@ export default function StateSamplePage() {
             </p>
 
             {/* 共通ボタンコンポーネントにイベントハンドラを渡す */}
-            <ActionButton label="登録する" onClick={handleClick} />
+            <ActionButton
+                label="登録する"
+                onClick={handleClick} // 【コールバック関数】
+            />
         </main>
     )
 }

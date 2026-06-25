@@ -43,7 +43,7 @@ export default function RootLayout({
                             リスト4-1 ActionButtonコンポーネントの実装
                             リスト4-2 useState()フックの利用
                             */}
-                            <a href="/chapter04/li4-1/state" className="hover:underline">ボタン</a>
+                            <a href="/chapter04/list4/input" className="hover:underline">ボタン</a>
 
                         </nav>
                     </div>
