@@ -2,7 +2,7 @@
 /**
  * リスト4-6 CheckboxGroupInput(チェックボックス)コンポーネントの実装
  */
-import CheckboxGroupInput from "@/components/chapter04/list4/check/RadioGroupInput";
+import CheckboxGroupInput from "@/components/chapter04/list4/check/CheckboxGroupInput";
 import { useState } from "react";
 
 export default function CheckboxSamplePage() {
