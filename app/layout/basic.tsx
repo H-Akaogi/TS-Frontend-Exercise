@@ -44,7 +44,8 @@ export default function RootLayout({
                             リスト4-2 useState()フックの利用
                             */}
                             <a href="/chapter04/list4/input" className="hover:underline">ボタン</a>
-
+                            {/* 演習 4-1 計算機を作成する(加算機能のみ) */}
+                            <a href="/chapter04/ex4-1" className="hover:underline">計算機</a>
                         </nav>
                     </div>
                 </header>
