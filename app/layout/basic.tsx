@@ -42,10 +42,17 @@ export default function RootLayout({
                             {/* 
                             リスト4-1 ActionButtonコンポーネントの実装
                             リスト4-2 useState()フックの利用
+                            リスト4-3 TextInputコンポーネントの実装
                             */}
-                            <a href="/chapter04/list4/input" className="hover:underline">ボタン</a>
+                            <a href="/chapter04/list4/input" className="hover:underline">入力</a>
+                            {/* 
+                            リスト4-4 SelectInput(プルダウン)コンポーネントの実装
+                            */}
+                            <a href="/chapter04/list4/select" className="hover:underline">プルダウン</a>
+
                             {/* 演習 4-1 計算機を作成する(加算機能のみ) */}
                             <a href="/chapter04/ex4-1" className="hover:underline">計算機</a>
+
                         </nav>
                     </div>
                 </header>

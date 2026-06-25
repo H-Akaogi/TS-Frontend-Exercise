@@ -2,7 +2,14 @@
  * リスト4-2 useState()フックの利用
  */
 "use client"; // 状態管理(useState)を使用するため必須
-// ReactからuseStateフックをインポート
+/** useState() 
+ * ReactからuseStateフックをインポート
+ * ---------------------------------------------
+ * const[現在の値, set更新関数] = useState(初期値)
+ * ---------------------------------------------
+ * Reactにおいて、コンポーネントに状態(State)を持たせるための標準機能
+ * 現在の状態の値と、状態を更新するための関数の二つが配列として返される
+ * */
 import { useState } from "react";
 import ActionButton from "@/components/chapter04/list4/button/ActionButton";
 
