@@ -49,7 +49,10 @@ export default function RootLayout({
                             リスト4-4 SelectInput(プルダウン)コンポーネントの実装
                             */}
                             <a href="/chapter04/list4/select" className="hover:underline">プルダウン</a>
-
+                            {/* 
+                            リスト4-5 RadioGroupInput(ラジオボタン)コンポーネントの実装
+                            */}
+                            <a href="/chapter04/list4/radio" className="hover:underline">ラジオボタン</a>
                             {/* 演習 4-1 計算機を作成する(加算機能のみ) */}
                             <a href="/chapter04/ex4-1" className="hover:underline">計算機</a>
                             {/* 演習 4-2 計算の種類をプルダウンで選択可能にする */}
