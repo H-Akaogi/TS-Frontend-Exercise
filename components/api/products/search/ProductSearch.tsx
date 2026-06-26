@@ -86,7 +86,7 @@ export const ProductSearch = () => {
                                             ￥{product.price.toLocaleString()}
                                         </TableCell>
                                         <TableCell className="text-center">
-                                            <span className="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">
+                                            <span className="bg-blue-100/50 text-blue-800 px-2 py-1 rounded-full text-xs">
                                                 {product.category.name}
                                             </span>
                                         </TableCell>

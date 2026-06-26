@@ -23,32 +23,28 @@ export default function ProfilePage() {
     const [name, setName] = useState("");
     const [message1, setMessage1] = useState("プロフィール")
 
-    // 2. 血液型【ラジオボタン】
+    // 2. 勤務地【ラジオボタン】
     const [message2, setMessage2] = useState("")
-    const [bloodType, setBlood] = useState("");
-    const bloodOptions = [
-        { value: "A", label: "A型" },
-        { value: "B", label: "B型" },
-        { value: "O", label: "O型" },
-        { value: "AB", label: "AB型" },
-        { value: "unknown", label: "不明" },
+    const [areaType, setArea] = useState("");
+    const areaOptions = [
+        { value: "渋谷", label: "渋谷" },
+        { value: "STC", label: "STC" },
+        { value: "上野", label: "上野" },
+        { value: "目黒", label: "目黒" },
+        { value: "その他", label: "その他" },
     ];
-    // 3. 星座
+    // 3. 部署
     const [message3, setMessage3] = useState("")
-    const [zodiacSign, setZodiacSign] = useState("1");
-    const zodiacSignOptions = [
-        { value: "1", label: "おひつじ座" },
-        { value: "2", label: "おうし座" },
-        { value: "3", label: "ふたご座" },
-        { value: "4", label: "かに座" },
-        { value: "5", label: "しし座" },
-        { value: "6", label: "おとめ座" },
-        { value: "7", label: "てんびん座" },
-        { value: "8", label: "さそり座" },
-        { value: "9", label: "いて座" },
-        { value: "10", label: "やぎ座" },
-        { value: "11", label: "みずがめ座" },
-        { value: "12", label: "うお座" },
+    const [department, setDepartment] = useState("1");
+    const departmentOptions = [
+        { value: "1", label: "開発本部" },
+        { value: "2", label: "人事部" },
+        { value: "3", label: "総務部" },
+        { value: "4", label: "営業部" },
+        { value: "5", label: "マーケティング部" },
+        { value: "6", label: "法務部" },
+        { value: "7", label: "企画部" },
+        { value: "8", label: "その他" },
     ]
     // 4. 好きな食べ物
     const [message4, setMessage4] = useState("")
@@ -62,8 +58,8 @@ export default function ProfilePage() {
     ]
     // メッセージ
     const handleClick = (): void => {
-        const selectedZodiac = zodiacSignOptions.find(
-            (option) => option.value === zodiacSign
+        const selectedDept = departmentOptions.find(
+            (option) => option.value === department
         );
 
         const selectedFoods = foodOptions
@@ -71,8 +67,8 @@ export default function ProfilePage() {
             .map((option) => option.label);
 
         setMessage1(`名前：${name}`);
-        setMessage2(`血液型：${bloodType}型`);
-        setMessage3(`星座：${selectedZodiac?.label}`);
+        setMessage2(`勤務地：${areaType}`);
+        setMessage3(`部署：${selectedDept?.label}`);
         setMessage4(`好きな食べ物：${selectedFoods.join("、")}`);
     }
 
@@ -91,21 +87,21 @@ export default function ProfilePage() {
                 />
             </div>
 
-            {/* 血液型 */}
+            {/* 勤務地 */}
             <div className="mt-4">
-                <Label className="text-base">血液型</Label>
+                <Label className="text-base">勤務地</Label>
                 <RadioGroup
-                    value={bloodType}
-                    onValueChange={(newValue) => setBlood(newValue)}
+                    value={areaType}
+                    onValueChange={(newValue) => setArea(newValue)}
                     className="flex mt-2"
                 >
-                    {bloodOptions.map((option) => (
+                    {areaOptions.map((option) => (
                         <div key={option.value} className="flex items-center space-x-2">
                             <RadioGroupItem
-                                id={`blood-${option.value}`}
+                                id={`area-${option.value}`}
                                 value={option.value}
                             />
-                            <Label htmlFor={`blood-${option.value}`}>
+                            <Label htmlFor={`area-${option.value}`}>
                                 {option.label}
                             </Label>
 
@@ -116,31 +112,33 @@ export default function ProfilePage() {
 
 
 
-            {/* 星座
+            {/* 部署
             shadcn/uiのSelectを使用 */}
             {/* Label: htmlForはidと対応 */}
             <div className="mt-4">
-                <Label htmlFor="zodiacSign" className="text-base">星座</Label>
-                {/* Select: shadcn/uiのセレクトボックス
-            onValueChangeで、選ばれた星座のvalueをzodiacSignに保存する */}
-                <Select value={zodiacSign} onValueChange={(newValue) => setZodiacSign(newValue)}>
-                    {/* SelectTrigger: セレクトボックスの押す部分 */}
-                    <SelectTrigger id="zodiacSign">
-                        {/* SelectValue: 選択中の値を表示する部分 */}
-                        <SelectValue placeholder="星座を選択" />
-                    </SelectTrigger>
+                <Label htmlFor="department" className="text-base">部署</Label>
+                <div>
+                    {/* Select: shadcn/uiのセレクトボックス
+            onValueChangeで、選ばれた部署のvalueをdepartmentに保存する */}
+                    <Select value={department} onValueChange={(newValue) => setDepartment(newValue)}>
+                        {/* SelectTrigger: セレクトボックスの押す部分 */}
+                        <SelectTrigger id="department">
+                            {/* SelectValue: 選択中の値を表示する部分 */}
+                            <SelectValue placeholder="部署を選択" />
+                        </SelectTrigger>
 
-                    {/* SelectContent: クリックしたときに開く選択肢一覧の部分
+                        {/* SelectContent: クリックしたときに開く選択肢一覧の部分
                 .map(): 配列の中身を1つずつ変換する処理 */}
-                    <SelectContent>
-                        {zodiacSignOptions.map((option) => (
-                            <SelectItem key={option.value} value={option.value}>
-                                {/* SelectItem: 画面に表示する文字 */}
-                                {option.label}
-                            </SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
+                        <SelectContent>
+                            {departmentOptions.map((option) => (
+                                <SelectItem key={option.value} value={option.value}>
+                                    {/* SelectItem: 画面に表示する文字 */}
+                                    {option.label}
+                                </SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
+                </div>
             </div>
 
             {/* 好きな食べ物 */}
@@ -176,8 +174,8 @@ export default function ProfilePage() {
             <div className="mt-6 p-4 bg-gray-50 rounded border text-gray-700 font-bold">
                 <p>現在のStateの値：</p>
                 <p className="text-blue-600 ml-2">✏️{name}</p>
-                <p className="text-blue-600 ml-2">✏️{bloodType}</p>
-                <p className="text-blue-600 ml-2">✏️{zodiacSign}</p>
+                <p className="text-blue-600 ml-2">✏️{areaType}</p>
+                <p className="text-blue-600 ml-2">✏️{department}</p>
                 <p className="text-blue-600 ml-2">✏️{food}</p>
             </div>
 

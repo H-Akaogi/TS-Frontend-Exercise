@@ -88,7 +88,7 @@ export default function GlobalNav() {
                         <CardHeader>
                             <CardTitle>🌼 プロフィール登録</CardTitle>
                             <CardDescription>
-                                名前、血液型、星座、好きな食べ物を登録します
+                                名前、勤務地、部署、好きな食べ物を登録します
                             </CardDescription>
                         </CardHeader>
                         <CardContent>

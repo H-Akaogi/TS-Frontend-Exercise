@@ -35,7 +35,9 @@ export const useSearchProduct = () => {
         }
     };
 
-    // UI層に対して、State(データ)と関数を公開する
+    /**UI層に対して、State(データ)と関数を公開する
+     * returnで返すと、コンポーネントで見ることができる！
+     */
     return {
         products,   // コンポーネント側で表示するための商品リスト
         isLoading,  // コンポーネント側でローディング表示を切り替えるための状態
