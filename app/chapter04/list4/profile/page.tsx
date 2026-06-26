@@ -10,6 +10,8 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Checkbox } from "@/components/ui/checkbox";
 import ActionButton from "@/components/chapter04/list4/button/ActionButton";
 import TextInput from "@/components/chapter04/list4/input/TextInput";
 import RadioGroupInput from "@/components/chapter04/list4/input/RadioGroupInput";
@@ -23,7 +25,7 @@ export default function ProfilePage() {
 
     // 2. 血液型【ラジオボタン】
     const [message2, setMessage2] = useState("")
-    const [bloodType, setBlood] = useState("血液型を選択")
+    const [bloodType, setBlood] = useState("");
     const bloodOptions = [
         { value: "A", label: "A型" },
         { value: "B", label: "B型" },
@@ -88,13 +90,29 @@ export default function ProfilePage() {
             />
 
             {/* 血液型 */}
-            <RadioGroupInput
-                label="血液型"
-                name="bloodType" // HTMLとしてグループ化するための名前(任意の英数字)
-                options={bloodOptions}
-                value={bloodType}
-                onChange={(newValue) => setBlood(newValue)}
-            />
+            <div className="mt-4">
+                <Label className="text-base">血液型</Label>
+                <RadioGroup
+                    value={bloodType}
+                    onValueChange={(newValue) => setBlood(newValue)}
+                    className="flex mt-2"
+                >
+                    {bloodOptions.map((option) => (
+                        <div key={option.value} className="flex items-center space-x-2">
+                            <RadioGroupItem
+                                id={`blood-${option.value}`}
+                                value={option.value}
+                            />
+                            <Label htmlFor={`blood-${option.value}`}>
+                                {option.label}
+                            </Label>
+
+                        </div>
+                    ))}
+                </RadioGroup>
+            </div>
+
+
 
             {/* 星座
             shadcn/uiのSelectを使用 */}

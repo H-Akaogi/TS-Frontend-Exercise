@@ -50,6 +50,8 @@ export default function RootLayout({
                             <a href="/chapter04/ex4-2" className="hover:underline">計算機(プルダウン)</a>
                             {/* 演習 5-2 shadcn/uiの利用 */}
                             <a href="/chapter05/calc" className="hover:underline">計算機(shadcn/ui)</a>
+                            {/* 演習 5-3 shadcn/uiの利用 */}
+                            <a href="/chapter05/survey" className="hover:underline">選択コンポーネント</a>
                             <a href="/chapter04/list4/profile" className="hover:underline">プロフィール</a>
                         </nav>
                     </div>
