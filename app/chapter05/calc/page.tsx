@@ -1,28 +1,64 @@
 "use client";
 /**
  * 演習 5-2 計算機を作成する(加算機能のみ)
+ * 演習 5-3 計算の種類をプルダウンで選択可能にする
  */
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+    Select,        // セレクトボックス全体の親
+    SelectContent, // 開いたときの選択肢一覧
+    SelectItem,    // 選択肢1つ分
+    SelectTrigger, // クリックして開く表示部分
+    SelectValue,   // 選択中の値・placeholderの表示
+} from "@/components/ui/select";
 
 export default function CalcPage() {
     // 💡入力中は文字列として扱うため初期値を空文字("")にする
     // Stateとフック
     const [num1, setNum1] = useState<string>("");
     const [num2, setNum2] = useState<string>("");
+
+    // 💡 初期値を"1"(足し算)に変更
+    const [operator, setOperator] = useState<string>("1");
     const [result, setResult] = useState<number>(0);
 
     // 計算を実行する関数
     const handleCalculate = () => {
         // 💡計算するときにNumber()で数値に変換して足し算する
-        setResult(Number(num1) + Number(num2));
+        const n1 = Number(num1);
+        const n2 = Number(num2);
+
+        switch (operator) {
+            case "1":
+                setResult(n1 + n2);
+                break;
+            case "2":
+                setResult(n1 - n2);
+                break;
+            case "3":
+                setResult(n1 * n2);
+                break;
+            case "4":
+                setResult(n1 / n2);
+                break;
+            case "5":
+                if (n2 === 0) {
+                    setResult(0);
+                } else {
+                    setResult(n1 % n2);
+                }
+                break;
+            default:
+                setResult(0);
+        }
     };
 
     return (
         <div className="p-8 max-w-sm mx-auto space-y-6">
-            <h2 className="text-2xl font-bold text-center">スタイリッシュ計算機</h2>
+            <h2 className="text-2xl font-bold text-center">高機能・計算機</h2>
 
             {/* 入力エリア1 */}
             <div className="space-y-2">
@@ -36,7 +72,23 @@ export default function CalcPage() {
                 />
             </div>
 
-            <div className="text-center font-bold text-xl">+</div>
+            {/* プルダウン(Selectコンポーネント) */}
+            <div className="flex justify-center my-4">
+                <Select value={operator} onValueChange={setOperator}>
+                    <SelectTrigger className="w-[140px]">
+                        <SelectValue placeholder="計算方法" />
+                    </SelectTrigger>
+
+                    <SelectContent>
+                        {/* 💡 ポイント: valueの値を "1" 〜 "5" の数字（文字列型）に変更 */}
+                        <SelectItem value="1">+ (加算)</SelectItem>
+                        <SelectItem value="2">- (減算)</SelectItem>
+                        <SelectItem value="3">× (乗算)</SelectItem>
+                        <SelectItem value="4">÷ (除算)</SelectItem>
+                        <SelectItem value="5">% (剰余)</SelectItem>
+                    </SelectContent>
+                </Select>
+            </div>
 
             {/* 入力エリア2 */}
             <div className="space-y-2">

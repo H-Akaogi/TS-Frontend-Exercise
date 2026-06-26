@@ -3,6 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
 import ActionButton from "@/components/chapter04/list4/button/ActionButton";
 import TextInput from "@/components/chapter04/list4/input/TextInput";
 import RadioGroupInput from "@/components/chapter04/list4/input/RadioGroupInput";
@@ -71,11 +78,11 @@ export default function ProfilePage() {
         <main className="p-4 max-w-sm mx-auto mt-10 border rounded shadow-sm bg-white">
             <h1 className="text-xl font-bold mb-4 border-b pb-2">プロフィールの登録</h1>
 
-            {/* 名前 */}
+            {/* 名前
+            shadcn/uiのLabel、Inputを使用 */}
             <Label htmlFor="name">お名前</Label>
             <Input
                 value={name}
-                //nChange={(newValue) => setName(newValue)}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="名前を入力..."
             />
@@ -89,13 +96,31 @@ export default function ProfilePage() {
                 onChange={(newValue) => setBlood(newValue)}
             />
 
-            {/* 星座 */}
-            <SelectInput
-                label="星座"
-                options={zodiacSignOptions}
-                value={zodiacSign}
-                onChange={(newValue) => setZodiacSign(newValue)}
-            />
+            {/* 星座
+            shadcn/uiのSelectを使用 */}
+            {/* Label: htmlForはidと対応 */}
+            <Label htmlFor="zodiacSign">星座</Label>
+            {/* Select: shadcn/uiのセレクトボックス
+            onValueChangeで、選ばれた星座のvalueをzodiacSignに保存する */}
+            <Select value={zodiacSign} onValueChange={(newValue) => setZodiacSign(newValue)}>
+                {/* SelectTrigger: セレクトボックスの押す部分 */}
+                <SelectTrigger id="zodiacSign">
+                    {/* SelectValue: 選択中の値を表示する部分 */}
+                    <SelectValue placeholder="星座を選択" />
+                </SelectTrigger>
+
+                {/* SelectContent: クリックしたときに開く選択肢一覧の部分
+                .map(): 配列の中身を1つずつ変換する処理 */}
+                <SelectContent>
+                    {zodiacSignOptions.map((option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                            {/* SelectItem: 画面に表示する文字 */}
+                            {option.label}
+                        </SelectItem>
+                    ))}
+                </SelectContent>
+            </Select>
+
 
             {/* 好きな食べ物 */}
             <CheckboxGroupInput
