@@ -82,12 +82,14 @@ export default function ProfilePage() {
 
             {/* 名前
             shadcn/uiのLabel、Inputを使用 */}
-            <Label htmlFor="name">お名前</Label>
-            <Input
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="名前を入力..."
-            />
+            <div className="mt-4">
+                <Label htmlFor="name" className="text-base">お名前</Label>
+                <Input
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="名前を入力..."
+                />
+            </div>
 
             {/* 血液型 */}
             <div className="mt-4">
@@ -117,36 +119,59 @@ export default function ProfilePage() {
             {/* 星座
             shadcn/uiのSelectを使用 */}
             {/* Label: htmlForはidと対応 */}
-            <Label htmlFor="zodiacSign">星座</Label>
-            {/* Select: shadcn/uiのセレクトボックス
+            <div className="mt-4">
+                <Label htmlFor="zodiacSign" className="text-base">星座</Label>
+                {/* Select: shadcn/uiのセレクトボックス
             onValueChangeで、選ばれた星座のvalueをzodiacSignに保存する */}
-            <Select value={zodiacSign} onValueChange={(newValue) => setZodiacSign(newValue)}>
-                {/* SelectTrigger: セレクトボックスの押す部分 */}
-                <SelectTrigger id="zodiacSign">
-                    {/* SelectValue: 選択中の値を表示する部分 */}
-                    <SelectValue placeholder="星座を選択" />
-                </SelectTrigger>
+                <Select value={zodiacSign} onValueChange={(newValue) => setZodiacSign(newValue)}>
+                    {/* SelectTrigger: セレクトボックスの押す部分 */}
+                    <SelectTrigger id="zodiacSign">
+                        {/* SelectValue: 選択中の値を表示する部分 */}
+                        <SelectValue placeholder="星座を選択" />
+                    </SelectTrigger>
 
-                {/* SelectContent: クリックしたときに開く選択肢一覧の部分
+                    {/* SelectContent: クリックしたときに開く選択肢一覧の部分
                 .map(): 配列の中身を1つずつ変換する処理 */}
-                <SelectContent>
-                    {zodiacSignOptions.map((option) => (
-                        <SelectItem key={option.value} value={option.value}>
-                            {/* SelectItem: 画面に表示する文字 */}
-                            {option.label}
-                        </SelectItem>
-                    ))}
-                </SelectContent>
-            </Select>
-
+                    <SelectContent>
+                        {zodiacSignOptions.map((option) => (
+                            <SelectItem key={option.value} value={option.value}>
+                                {/* SelectItem: 画面に表示する文字 */}
+                                {option.label}
+                            </SelectItem>
+                        ))}
+                    </SelectContent>
+                </Select>
+            </div>
 
             {/* 好きな食べ物 */}
-            <CheckboxGroupInput
-                label="好きな食べ物"
-                options={foodOptions}
-                values={food}
-                onChange={(newValue) => setFood(newValue)}
-            />
+            <div className="mt-4">
+                <Label htmlFor="food" className="text-base">好きな食べ物</Label>
+                <div className="mt-2 flex flex-wrap gap-4">
+                    {foodOptions.map((option) => (
+                        <div key={option.value} className="flex items-center space-x-2">
+                            <Checkbox
+                                id={`food-${option.value}`}
+                                // 現在の状態(true/false)をcheckedに渡す
+                                checked={food.includes(option.value)}
+                                // チェックが切り替わったときに、onCheckedChangeが呼ばれる
+                                onCheckedChange={(checked) => {
+                                    if (checked) {
+                                        setFood([...food, option.value]);
+                                    } else {
+                                        setFood(
+                                            food.filter((value) => value !== option.value)
+                                        );
+                                    }
+                                }}
+                            />
+                            <Label htmlFor={`food-${option.value}`}>
+                                {option.label}
+                            </Label>
+                        </div>
+                    ))}
+
+                </div>
+            </div>
 
             <div className="mt-6 p-4 bg-gray-50 rounded border text-gray-700 font-bold">
                 <p>現在のStateの値：</p>
@@ -163,9 +188,9 @@ export default function ProfilePage() {
             </div>
             <div className="mt-6 text-gray-700 font-bold text-center text-lg text-blue-600">
                 <p>⭐{message1}</p>
-                <p>⭐{message2}</p>
-                <p>⭐{message3}</p>
-                <p>⭐{message4}</p>
+                <p>{message2}</p>
+                <p>{message3}</p>
+                <p>{message4}</p>
             </div>
         </main>
     );
