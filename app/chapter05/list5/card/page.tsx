@@ -8,7 +8,9 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-
+/**
+ * リスト5-6 カード
+ */
 export default function CardSample() {
     return (
         <div className="p-8 bg-slate-50 min-h-screen">
