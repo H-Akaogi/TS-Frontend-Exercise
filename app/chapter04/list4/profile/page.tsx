@@ -1,6 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
-
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import ActionButton from "@/components/chapter04/list4/button/ActionButton";
 import TextInput from "@/components/chapter04/list4/input/TextInput";
@@ -71,10 +72,12 @@ export default function ProfilePage() {
             <h1 className="text-xl font-bold mb-4 border-b pb-2">プロフィールの登録</h1>
 
             {/* 名前 */}
-            <TextInput
-                label="お名前"
+            <Label htmlFor="name">お名前</Label>
+            <Input
                 value={name}
-                onChange={(newValue) => setName(newValue)}
+                //nChange={(newValue) => setName(newValue)}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="名前を入力..."
             />
 
             {/* 血液型 */}
