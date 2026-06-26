@@ -1,19 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist } from "next/font/google";
 import "./globals.css";
-import BasicLayout from "./layout/basic";
-
+import FrontMenuLayout from "./layout/frontmenu";
 // layout.tsxは共通の外枠
 // プロジェクトに必ず1つ必要. ヘッダー・フッターを記述
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,5 +17,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   // 💡 読み込んだレイアウトにページの中身(children)を渡してそのまま返す
   // これがないと、ページ遷移ができない
   // 引数{children}として、returnの中で描画する
-  return <BasicLayout>{children}</BasicLayout>;
+  // 新しいレイアウトを利用する
+  return <FrontMenuLayout>{children}</FrontMenuLayout>;
 }
