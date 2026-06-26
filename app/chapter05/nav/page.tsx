@@ -54,7 +54,7 @@ export default function GlobalNav() {
 
                     <Card className="hover:shadow-lg transition-shadow border-blue-200 bg-white">
                         <CardHeader>
-                            <CardTitle>✨ 計算機３（shadcn/ui）</CardTitle>
+                            <CardTitle>📋 計算機３（shadcn/ui）</CardTitle>
                             <CardDescription>
                                 shadcn/uiを使って作成した計算機です
                             </CardDescription>
@@ -102,14 +102,14 @@ export default function GlobalNav() {
 
                     <Card className="hover:shadow-lg transition-shadow border-blue-200 bg-white">
                         <CardHeader>
-                            <CardTitle>📋 テーブル（shadcn/ui）</CardTitle>
+                            <CardTitle>✨ shadcn/ui</CardTitle>
                             <CardDescription>
-                                shadcn/uiを使って表を表示するページです
+                                shadcn/uiを使って製作したもの一覧です
                             </CardDescription>
                         </CardHeader>
                         <CardContent>
                             <Button asChild className="hover:text-blue-900 hover:bg-blue-300 active:text-blue-900 w-full text-blue-900 bg-blue-200 border-blue-200">
-                                <Link href="/chapter05/list5/table">
+                                <Link href="/chapter05/list5/nav-menu">
                                     画面へ進む
                                 </Link>
                             </Button>
