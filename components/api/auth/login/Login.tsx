@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { Progress } from "@/components/ui/progress";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { Input } from "@/components/ui/input";
@@ -40,6 +41,25 @@ export const Login = () => {
         }
     };
 
+    /**
+     * プログレスバーの追加
+     */
+    const [progress, setProgress] = useState(0);
+
+    useEffect(() => {
+        if (isLoading) {
+            setProgress(13);
+
+            const timer = setTimeout(() => {
+                setProgress(66);
+            }, 500);
+
+            return () => clearTimeout(timer);
+        }
+
+        setProgress(0);
+    }, [isLoading]);
+
     return (
         <div className="max-w-md mx-auto mt-20 bg-white p-8 rounded-lg shadow-sm border border-border">
             <h2 className="text-2xl font-bold text-foreground mb-6 text-center border-b pb-4">
@@ -51,6 +71,17 @@ export const Login = () => {
                     {errorMessage}
                 </div>
             )}
+
+            {/* プログレスバー表示エリア */}
+            {isLoading && (
+                <div className="mb-4">
+                    <Progress value={progress} className="w-full" />
+                    <p className="text-sm text-gray-500 mt-2 text-center">
+                        ログイン処理中です...
+                    </p>
+                </div>
+            )}
+
             <form onSubmit={handleSubmit} className="flex flex-col gap-6">
 
                 {/* ユーザー名入力エリア */}
@@ -91,7 +122,7 @@ export const Login = () => {
                 {/* ログインボタン:
                     isLoadingがtrue(処理中)、または入力欄が空の場合はボタンを無効化(disabled)する
                 */}
-                <Button type="submit" disabled={isLoading || !username || !password} className="w-full mt-2">
+                <Button type="submit" disabled={isLoading || !username || !password} className="w-full mt-2 hover:text-blue-900 hover:bg-blue-300 active:text-blue-900 text-blue-900 bg-blue-200 border-blue-200">
                     {isLoading ? "ログイン中..." : "ログイン"}
                 </Button>
             </form>
