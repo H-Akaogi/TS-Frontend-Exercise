@@ -11,8 +11,16 @@ import {
     NavigationMenuList,
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import { useSession } from "next-auth/react";
 
 export default function Header() {
+    /**
+     * 演習 7-4 ログインUIを作成し、ログイン可能にする
+     * 追加
+     */
+    // 追加: セッションの認証状態(status)のみを取得
+    const { status } = useSession();
+
     return (
         <header className="border-b border-blue-200 bg-blue-100 p-4 shadow-sm">
             <div className="container mx-auto flex items-center justify-between">
@@ -25,19 +33,32 @@ export default function Header() {
                     {/* 💡 項目が増えたため、スマホなどの狭い画面でも綺麗に折り返せるよう flex-wrap をこっそり付けておくと安全です */}
                     <NavigationMenuList className="flex flex-wrap justify-end">
 
+                        {/* 追加：💡 ログイン中のみステータスを表示 */}
+                        {status === "authenticated" && (
+                            <span className="text-sm font-bold text-blue-800 bg-blue-200 px-3 py-1 rounded-full">
+                                ログイン中
+                            </span>
+                        )}
+
                         {/* メニュー1：ログイン */}
-                        <NavigationMenuItem>
-                            <NavigationMenuLink asChild className={`${navigationMenuTriggerStyle()} text-blue-900 bg-transparent hover:bg-blue-200`}>
-                                <Link href="/api/auth/login">ログイン</Link>
-                            </NavigationMenuLink>
-                        </NavigationMenuItem>
+                        {/* 追加：未ログイン時のみ「ログイン」を表示 */}
+                        {status === "unauthenticated" && (
+                            <NavigationMenuItem>
+                                <NavigationMenuLink asChild className={`${navigationMenuTriggerStyle()} text-blue-900 bg-transparent hover:bg-blue-200`}>
+                                    <Link href="/api/auth/login">ログイン</Link>
+                                </NavigationMenuLink>
+                            </NavigationMenuItem>
+                        )}
 
                         {/* メニュー2：ログアウト */}
-                        <NavigationMenuItem>
-                            <NavigationMenuLink asChild className={`${navigationMenuTriggerStyle()} text-blue-900 bg-transparent hover:bg-blue-200`}>
-                                <Link href="/api/auth/logout">ログアウト</Link>
-                            </NavigationMenuLink>
-                        </NavigationMenuItem>
+                        {/* 追加：ログイン中のみ「ログアウト」を表示 */}
+                        {status === "authenticated" && (
+                            <NavigationMenuItem>
+                                <NavigationMenuLink asChild className={`${navigationMenuTriggerStyle()} text-blue-900 bg-transparent hover:bg-blue-200`}>
+                                    <Link href="/api/auth/logout">ログアウト</Link>
+                                </NavigationMenuLink>
+                            </NavigationMenuItem>
+                        )}
 
                         {/* メニュー3：ユーザー登録 */}
                         <NavigationMenuItem>
