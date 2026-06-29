@@ -14,7 +14,11 @@ export const authOptions: NextAuthOptions = {
                 password: { label: "Password", type: "password" }
             },
 
-            // 認証ロジックの実装
+            /**
+             * 認証ロジックの実装
+             * @param credentials 
+             * @returns RESTAPIに対して、認証リクエストを発行する
+             */
             async authorize(credentials) {
                 try {
                     // バックエンドAPIへ認証リクエストを送信
@@ -49,6 +53,7 @@ export const authOptions: NextAuthOptions = {
     /**
      * 演習 7-3 取得したJWTをアプリケーション全体で利用可能にする
      */
+    // NextAuthに実行してほしいコールバック関数
     callbacks: {
         // トークンの保存処理 (authorizeの戻り値をJWTに書き込む)
         async jwt({ token, user }) {
