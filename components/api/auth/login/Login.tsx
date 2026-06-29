@@ -59,10 +59,11 @@ export const Login = () => {
                         ユーザー名またはメールアドレス
                     </label>
                     {/* onChangeイベントハンドラ:
-            入力値が変更されるたびに実行される
-            イベントオブジェクトから最新の入力値 (e.target.value) を取得し、
-            ローカルState(username)を更新することで、Reactの制御されたコンポーネント(Controlled Component)としてUIと状態を同期する
-          */}
+                        入力値が変更されるたびに実行される
+                        イベントオブジェクトから最新の入力値 (e.target.value) を取得し、
+                        ローカルState(username)を更新することで、Reactの制御されたコンポーネント(Controlled Component)としてUIと状態を同期する
+                    */}
+
                     <Input
                         type="text"
                         value={username}
@@ -88,8 +89,8 @@ export const Login = () => {
                 </div>
 
                 {/* ログインボタン:
-          isLoadingがtrue(処理中)、または入力欄が空の場合はボタンを無効化(disabled)する
-        */}
+                    isLoadingがtrue(処理中)、または入力欄が空の場合はボタンを無効化(disabled)する
+                */}
                 <Button type="submit" disabled={isLoading || !username || !password} className="w-full mt-2">
                     {isLoading ? "ログイン中..." : "ログイン"}
                 </Button>
