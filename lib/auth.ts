@@ -43,4 +43,28 @@ export const authOptions: NextAuthOptions = {
             }
         }),
     ],
+    pages: {
+        signIn: '/login', // ログイン画面は自作のものを使用するため、NextAuthのデフォルトUIは無効化
+    },
+    /**
+     * 演習 7-3 取得したJWTをアプリケーション全体で利用可能にする
+     */
+    callbacks: {
+        // トークンの保存処理 (authorizeの戻り値をJWTに書き込む)
+        async jwt({ token, user }) {
+            if (user) {
+                // user(authorizeで返したデータ)をtokenオブジェクトにマージする
+                return { ...token, ...user };
+            }
+            return token;
+        },
+        // セッションの公開処理 (JWTの内容をReactコンポーネントから参照可能にする)
+        async session({ session, token }) {
+            if (session.user) {
+                // token(JWT)に保存されている情報をセッションのuserに詰め替える
+                session.user = token as any;
+            }
+            return session;
+        },
+    },
 };
