@@ -11,7 +11,11 @@ import {
     NavigationMenuList,
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { useSession } from "next-auth/react";
+/**
+ * 演習 7-5 ログアウト機能を実装する
+ * インポートを変更する（signOut を追加）
+ */
+import { useSession, signOut } from "next-auth/react";
 
 export default function Header() {
     /**
@@ -51,11 +55,12 @@ export default function Header() {
                         )}
 
                         {/* メニュー2：ログアウト */}
-                        {/* 追加：ログイン中のみ「ログアウト」を表示 */}
+                        {/* ログイン中のみ[ログアウト]を表示 */}
                         {status === "authenticated" && (
                             <NavigationMenuItem>
                                 <NavigationMenuLink asChild className={`${navigationMenuTriggerStyle()} text-blue-900 bg-transparent hover:bg-blue-200`}>
-                                    <Link href="/api/auth/logout">ログアウト</Link>
+                                    {/* Linkからbuttonに変更して、signOut()関数を呼び出す */}
+                                    <button onClick={() => signOut({ callbackUrl: "/" })}>ログアウト</button>
                                 </NavigationMenuLink>
                             </NavigationMenuItem>
                         )}

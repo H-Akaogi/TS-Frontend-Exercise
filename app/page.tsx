@@ -3,7 +3,11 @@
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useSession } from "next-auth/react";
+/**
+ * 演習 7-5 ログアウト機能を実装する
+ * インポートを変更する（signOut を追加）
+ */
+import { useSession, signOut } from "next-auth/react";
 
 export default function MenuPage() {
   /**
@@ -47,10 +51,10 @@ export default function MenuPage() {
               <CardDescription>システムから安全にログアウトします</CardDescription>
             </CardHeader>
             <CardContent>
-              {/* 💡 ログアウトはLinkではなくボタン＋signOut関数で呼ぶのが一般的ですが、
-                  今はURL形式に合わせています */}
-              <Button asChild variant="outline" className="w-full border-red-200 text-red-600 hover:bg-red-50">
-                <Link href="/api/auth/logout">ログアウトする</Link>
+              {/* LinkからButtonに変更して、signOut()関数を呼び出す */}
+              <Button variant="outline" className="w-full border-red-200 text-red-600 hover:bg-red-50"
+                onClick={() => signOut({ callbackUrl: "/" })}>
+                ログアウト
               </Button>
             </CardContent>
           </Card>
