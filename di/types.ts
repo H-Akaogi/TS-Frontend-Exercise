@@ -15,6 +15,10 @@ export const TYPES = {
     /**
      * 演習 8-9 リポジトリの実装を作成する
      */
-    IProductCategoryRepository: Symbol.for("IProductCategoryRepository")
+    IProductCategoryRepository: Symbol.for("IProductCategoryRepository"),
+    /**
+     * 演習 8-10 商品登録サービスを実装してDIコンテナに登録する
+     */
+    IRegisterProductService: Symbol.for("IRegisterProductService")
 
 };
