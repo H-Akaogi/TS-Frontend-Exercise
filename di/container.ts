@@ -9,6 +9,9 @@ import { RegisterUserService } from "@/services/RegisterUserService";
 import { IUserRepository } from "@/interfaces/IUserRepository";
 import { UserRepository } from "@/infrastructures/UserRepository";
 import { ProductRepository } from "@/infrastructures/ProductRepository";
+import { IProductCategoryRepository } from "@/interfaces/IProductCategoryRepository";
+import { ProductCategoryRepository } from "@/infrastructures/ProductCategoryRepository";
+
 /**
  * 演習 6-2 データアクセスとサービスを実装する
  * DIコンテナの初期化と依存関係の登録
@@ -36,5 +39,10 @@ container.bind<ISearchProductService>(TYPES.ISearchProductService).to(SearchProd
  */
 container.bind<IUserRepository>(TYPES.IUserRepository).to(UserRepository);
 container.bind<IRegisterUserService>(TYPES.IRegisterUserService).to(RegisterUserService);
+
+/**
+ * 演習 8-9 リポジトリの実装を作成する
+ */
+container.bind<IProductCategoryRepository>(TYPES.IProductCategoryRepository).to(ProductCategoryRepository);
 
 export { container };
