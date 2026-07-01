@@ -14,6 +14,7 @@ export const RegisterUser = () => {
     const { register, isLoading, error } = useRegisterUser();
 
     // フォームの入力値を管理するローカルState
+    // 入力が必要なのでStateを付ける(onChangeする)
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -24,6 +25,7 @@ export const RegisterUser = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
+        // 入力されたデータから、新しいUserオブジェクトを作成している
         const newUser: User = { username, email, password };
 
         // Custom Hooksの登録関数を呼び出す
@@ -31,6 +33,7 @@ export const RegisterUser = () => {
 
         // 成功した場合はログイン画面へ自動的に遷移する
         if (success) {
+            // pushで、引数に指定したURL(ログイン画面)へ遷移してくれる
             router.push("/api/auth/login");
         }
     };
