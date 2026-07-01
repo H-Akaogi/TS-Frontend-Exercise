@@ -17,6 +17,7 @@ export class ProductRepository implements IProductRepository {
     public async searchKeyword(keyword: string): Promise<Product[]> {
         // NextAuthのセッションからアクセストークンを取得する
         const session = await getSession();
+        // トークンを取り出す
         const token = (session as any)?.user?.token;
 
         // 検索クエリパラメータの構築
@@ -24,8 +25,12 @@ export class ProductRepository implements IProductRepository {
 
         // API呼び出し(next.config.tsで設定したプロキシ経由)
         const response = await fetch(`/proxy-api/products/search?${params.toString()}`, {
+            // GETリクエストを送る
             method: "GET",
+            // AuthorizationヘッダーにJWTトークンを付ける
+            // バックエンドAPIから検索結果を受け取る
             headers: {
+                // JWTトークンを付与する
                 "Authorization": `Bearer ${token}`,
                 "Content-Type": "application/json"
             }
@@ -47,6 +52,7 @@ export class ProductRepository implements IProductRepository {
         }
 
         // 成功時は商品リスト(JSON)をパースして返却する
+        // JSONをJavaScriptのデータに変換する
         const products: Product[] = await response.json();
         return products;
     }
