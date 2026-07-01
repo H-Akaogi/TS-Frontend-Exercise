@@ -115,15 +115,15 @@ export const useRegisterProduct = () => {
 
     // UIコンポーネントに必要なプロパティと関数を返す
     return {
-        formData,
-        categories,
-        errors,
-        isLoading,
-        isSuccess,
-        handleChange,
-        handleCategoryChange,
-        handleNameBlur,
-        handleSubmit,
-        resetForm
+        formData, // コンポーネント側で表示・入力するための商品登録フォームの状態
+        categories, // コンポーネント側で表示するための取得したカテゴリ一覧
+        errors, // コンポーネント側でエラーメッセージを表示するための状態
+        isLoading, // コンポーネント側でローディング表示やボタン無効化を制御するための状態
+        isSuccess, // コンポーネント側で登録処理が完了したことを表示するための状態
+        handleChange, // 入力の変更イベント関数
+        handleCategoryChange, //カテゴリ選択時に詳細情報を取得する関数
+        handleNameBlur, // 商品名入力終了時に重複を検証する関数
+        handleSubmit, // [登録]ボタンクリック時にデータを永続化する関数
+        resetForm // フォームを初期化する関数
     };
 };

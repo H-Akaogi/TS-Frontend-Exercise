@@ -18,7 +18,9 @@ export const RegisterUser = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    // 登録ボタンが押されたときの処理
+    /**登録ボタンが押されたときの処理
+     * イベントハンドラ
+     */
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
