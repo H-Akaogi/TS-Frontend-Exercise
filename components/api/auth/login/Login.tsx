@@ -1,5 +1,4 @@
 "use client";
-import { Progress } from "@/components/ui/progress";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";

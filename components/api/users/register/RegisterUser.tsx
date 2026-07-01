@@ -3,6 +3,7 @@ import { useRegisterUser } from "@/components/hooks/useRegisterUser";
 import { User } from "@/models/User";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { LoadingProgress } from "@/components/common/LoadingProgress";
 
 /**
  * 演習 8-6 画面のコンポーネントとページを作成し、動作確認する
@@ -48,6 +49,12 @@ export const RegisterUser = () => {
                     {error}
                 </div>
             )}
+
+            {/* プログレスバー表示エリア */}
+            <LoadingProgress
+                isLoading={isLoading}
+                message="ユーザー登録処理中です..."
+            />
 
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div>

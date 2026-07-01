@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/select";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { LoadingProgress } from "@/components/common/LoadingProgress";
 
 /**
  * 演習 8-12 商品登録画面コンポーネントを実装し動作確認する
@@ -46,6 +47,12 @@ export const ProductRegister = () => {
         <>
             <div className="container mx-auto py-10 max-w-lg">
                 <h1 className="text-2xl font-bold mb-6">商品新規登録</h1>
+
+                {/* プログレスバー表示エリア */}
+                <LoadingProgress
+                    isLoading={isLoading}
+                    message="ユーザー登録処理中です..."
+                />
 
                 <form onSubmit={onSubmit} className="space-y-6">
                     {/* 商品名入力 */}
