@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/table";
 import { useSearchProduct } from "@/components/hooks/useSearchProduct";
 import { AlertCircle } from "lucide-react";
-
+import { CommonAlert } from "@/components/common/CommonAlert";
 /**
  * 演習 8-7 バックエンドにアクセスするリポジトリを実装して切り替える
  * ユーザーからの入力を受け付け、カスタムフック経由で検索処理を呼び出す
@@ -58,10 +58,10 @@ export const ProductSearch = () => {
 
             {/* エラーメッセージを表示する */}
             {error && (
-                <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-600 rounded-md flex items-center gap-2 animate-in fade-in slide-in-from-top-1">
-                    <AlertCircle className="h-5 w-5" />
-                    <span className="font-medium">{error}</span>
-                </div>
+                <CommonAlert
+                    title="エラー"
+                    message={error}
+                />
             )}
 
             {/* 検索結果の表示エリア */}
