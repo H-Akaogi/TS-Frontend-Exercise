@@ -84,11 +84,6 @@ export default function MenuPage() {
                 )}
                 ログイン画面へ
               </Button>
-              {/*
-              <Button asChild className="hover:text-blue-900 hover:bg-blue-300 active:text-blue-900 w-full text-blue-900 bg-blue-200 border-blue-200">
-                <Link href="/api/auth/login">ログイン画面へ</Link>
-              </Button>
-              */}
             </CardContent>
           </Card>
         )}
