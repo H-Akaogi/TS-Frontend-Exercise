@@ -4,6 +4,7 @@ import { User } from "@/models/User";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { LoadingProgress } from "@/components/common/LoadingProgress";
+import { toast } from "sonner";
 
 /**
  * 演習 8-6 画面のコンポーネントとページを作成し、動作確認する
@@ -36,6 +37,7 @@ export const RegisterUser = () => {
         if (success) {
             // pushで、引数に指定したURL(ログイン画面)へ遷移してくれる
             router.push("/api/auth/login");
+            toast.success("ユーザー登録に成功しました");
         }
     };
 

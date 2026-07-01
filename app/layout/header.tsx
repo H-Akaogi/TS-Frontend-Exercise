@@ -4,6 +4,8 @@
  */
 "use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 import {
     NavigationMenu,
     NavigationMenuItem,
@@ -24,6 +26,23 @@ export default function Header() {
      */
     // 追加: セッションの認証状態(status)のみを取得
     const { status } = useSession();
+    const router = useRouter();
+
+    // ログアウト時に呼び出す関数
+    const handleLogout = async () => {
+        try {
+            await signOut({
+                redirect: false,
+            });
+
+            toast.success("ログアウトしました。");
+
+            router.push("/");
+            router.refresh();
+        } catch (error) {
+            toast.error("ログアウトに失敗しました。");
+        }
+    };
 
     return (
         <header className="border-b border-blue-200 bg-blue-100 p-4 shadow-sm">
@@ -58,9 +77,11 @@ export default function Header() {
                         {/* ログイン中のみ[ログアウト]を表示 */}
                         {status === "authenticated" && (
                             <NavigationMenuItem>
-                                <NavigationMenuLink asChild className={`${navigationMenuTriggerStyle()} text-blue-900 bg-transparent hover:bg-blue-200`}>
+                                <NavigationMenuLink
+                                    asChild
+                                    className={`${navigationMenuTriggerStyle()} text-blue-900 bg-transparent hover:bg-blue-200`}>
                                     {/* Linkからbuttonに変更して、signOut()関数を呼び出す */}
-                                    <button onClick={() => signOut({ callbackUrl: "/" })}>ログアウト</button>
+                                    <button type="button" onClick={handleLogout}>ログアウト</button>
                                 </NavigationMenuLink>
                             </NavigationMenuItem>
                         )}

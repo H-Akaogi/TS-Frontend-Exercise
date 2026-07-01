@@ -14,7 +14,7 @@ import {
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { LoadingProgress } from "@/components/common/LoadingProgress";
-
+import { toast } from "sonner";
 /**
  * 演習 8-12 商品登録画面コンポーネントを実装し動作確認する
  * 商品登録画面のUIコンポーネント
@@ -40,9 +40,11 @@ export const ProductRegister = () => {
     // フォーム送信時のUI側イベントハンドラ
     const onSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault(); // デフォルトの画面遷移を防止する
-        await handleSubmit(); // Hookの送信処理を実行する
+        const result = await handleSubmit(); // Hookの送信処理を実行する
+        if (result) {
+            toast.success("商品の登録が完了しました。");
+        }
     };
-
     return (
         <>
             <div className="container mx-auto py-10 max-w-lg">

@@ -1,3 +1,4 @@
+import { CommonSonner } from "@/components/common/CommonSonner";
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <NextAuthProvider>
       <FrontMenuLayout>{children}</FrontMenuLayout>
+      <CommonSonner />
     </NextAuthProvider>
   );
 }

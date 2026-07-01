@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 import { LoadingProgress } from "@/components/common/LoadingProgress";
 /**
  * 演習 7-4 ログインUIを作成し、ログイン可能にする
@@ -37,6 +38,7 @@ export const Login = () => {
             // 成功時：トップページへ遷移し、ヘッダー等の状態を最新にする
             router.push("/");
             router.refresh();
+            toast.success("ログインに成功しました");
         }
     };
 

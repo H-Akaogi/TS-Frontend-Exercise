@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { Spinner } from "@/components/ui/spinner";
 import { useState } from "react";
+import { toast } from "sonner";
 /**
  * 演習 7-5 ログアウト機能を実装する
  * インポートを変更する（signOut を追加）
@@ -35,7 +36,21 @@ export default function MenuPage() {
   // ログアウト時に呼び出す関数
   const handleLogout = async () => {
     setIsLoggingOut(true);
-    await signOut({ callbackUrl: "/" });
+    try {
+      await signOut({
+        redirect: false,
+      });
+
+      toast.success("ログアウトしました。");
+
+      router.push("/");
+      router.refresh();
+    } catch (error) {
+      toast.error("ログアウトに失敗しました。");
+      setIsLoggingOut(false);
+    } finally {
+      setIsLoggingOut(false);
+    }
   };
 
   // 他のボタンを押せないようにするための判定
@@ -98,12 +113,6 @@ export default function MenuPage() {
                 )}
                 {isLoggingOut ? "ログアウト中..." : "ログアウト"}
               </Button>
-              {/*
-              <Button variant="outline" className="w-full border-red-200 text-red-600 hover:bg-red-50"
-                onClick={() => signOut({ callbackUrl: "/" })}>
-                ログアウト
-              </Button>
-              */}
             </CardContent>
           </Card>
         )}
