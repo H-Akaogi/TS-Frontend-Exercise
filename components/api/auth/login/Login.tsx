@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-
+import { LoadingProgress } from "@/components/common/LoadingProgress";
 /**
  * 演習 7-4 ログインUIを作成し、ログイン可能にする
  * ログインフォームコンポーネント
@@ -41,25 +41,6 @@ export const Login = () => {
         }
     };
 
-    /**
-     * プログレスバーの追加
-     */
-    const [progress, setProgress] = useState(0);
-
-    useEffect(() => {
-        if (isLoading) {
-            setProgress(13);
-
-            const timer = setTimeout(() => {
-                setProgress(66);
-            }, 500);
-
-            return () => clearTimeout(timer);
-        }
-
-        setProgress(0);
-    }, [isLoading]);
-
     return (
         <div className="max-w-md mx-auto mt-20 bg-white p-8 rounded-lg shadow-sm border border-border">
             <h2 className="text-2xl font-bold text-foreground mb-6 text-center border-b pb-4">
@@ -73,14 +54,10 @@ export const Login = () => {
             )}
 
             {/* プログレスバー表示エリア */}
-            {isLoading && (
-                <div className="mb-4">
-                    <Progress value={progress} className="w-full" />
-                    <p className="text-sm text-gray-500 mt-2 text-center">
-                        ログイン処理中です...
-                    </p>
-                </div>
-            )}
+            <LoadingProgress
+                isLoading={isLoading}
+                message="ログイン処理中です..."
+            />
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-6">
 
